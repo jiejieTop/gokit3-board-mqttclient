@@ -8,7 +8,7 @@
 #ifndef _MQTT_CONFIG_H_
 #define _MQTT_CONFIG_H_
 
-#define             LOG_IS_SALOF
+//#define             LOG_IS_SALOF
 
 #define             LOG_LEVEL                   DEBUG_LEVEL   //WARN_LEVEL DEBUG_LEVEL
 
@@ -17,8 +17,8 @@
     #define         USE_SALOF                   (1U)
     #define         SALOF_OS                    USE_TENCENTOS
     #define         USE_IDLE_HOOK               (0U)
-    #define         LOG_COLOR                   (1U)
-    #define         LOG_TS                      (1U)
+    #define         LOG_COLOR                   (0U)
+    #define         LOG_TS                      (0U)
     #define         LOG_TAR                     (0U)
     #define         SALOF_BUFF_SIZE             (512U)
     #define         SALOF_FIFO_SIZE             (1024U)

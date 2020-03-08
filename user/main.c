@@ -37,13 +37,10 @@ void test_task1(void *Parameter)
 
     error = mqtt_connect(&client);
     
-    LOG_D("mqtt connect error is %#x", error);
-    
-    mqtt_subscribe(&client, "testtopic-gokit", QOS0, NULL);
-    
+    //mqtt_subscribe(&client, "testtopic-gokit", QOS0, NULL);    
     while(1)
     {
-        tos_task_delay(2000); 
+        tos_task_delay(5000); 
         
         tos_cpu_int_disable();
 
@@ -52,23 +49,13 @@ void test_task1(void *Parameter)
         tos_cpu_int_enable();
         
         if(error == SUCCESS) {
-            sprintf(buf, "temperature = %f, humidity = %f\n", dht11_data.temperature, dht11_data.humidity);
+            sprintf(buf, "{\n\ttemperature : %f,\n\thumidity : %f\n}", dht11_data.temperature, dht11_data.humidity);
             
             msg.qos = QOS0;
             msg.payload = (void *) buf;
-            
             mqtt_publish(&client, "testtopic-gokit", &msg);
-            
-            printf("mqtt publish to testtopic-gokit topic!\n");
-        } else {
-            printf("dht11 read error... \n");
         }
         
-//        motor_set_speed(MOTOR_FORWARD, 20);
-//        
-//        tos_task_delay(2000); 
-//        
-//        motor_set_speed(MOTOR_FORWARD, 80);
     }
 }
 

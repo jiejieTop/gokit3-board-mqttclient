@@ -50,12 +50,8 @@ void bsp_init(void)
     
     rgb_led_init();
     
-    rgb_led_control(250, 250, 250);
-    
     motor_init();
    
-    
-    
     printf("bsp init ok!\n");
 }
 
